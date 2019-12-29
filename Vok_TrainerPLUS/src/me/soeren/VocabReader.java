@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import javax.swing.JFileChooser;
 
 import me.soeren.vocab.Genus;
 import me.soeren.vocab.SubstantivVocab;
+import me.soeren.vocab.VerbVocab;
 
 public class VocabReader {
     List<String> VocabList = new ArrayList<>();
@@ -119,7 +119,20 @@ public class VocabReader {
 	                new SubstantivVocab(genus, genitiv, foreignMeaning, localMeaning);
 	                
                 }else if(platzhalter[0].contains("Verb")) {
+                	if(platzhalter[1]!= null) {
+                		foreignMeaning = platzhalter[1];
+                	}else {
+                		System.out.println("ERROR");
+                	}
+                	if(platzhalter[2]!= null) {
+                		localMeaning = platzhalter[2];
+                	}else {
+                		System.out.println("ERROR");
+                	}
                 	
+                	VocabList.add(localMeaning);
+                	
+                	new VerbVocab(localMeaning, foreignMeaning);
                 }else {
                 	System.out.println("ERROR: Type");
                 }
