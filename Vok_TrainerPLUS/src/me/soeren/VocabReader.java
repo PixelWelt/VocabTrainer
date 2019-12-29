@@ -11,9 +11,11 @@ import java.util.List;
 
 import javax.swing.JFileChooser;
 
+import me.soeren.vocab.Genus;
+import me.soeren.vocab.SubstantivVocab;
+
 public class VocabReader {
-    List<String> VocabListLocal = new ArrayList<>();
-    List<String> VocabListForeign = new ArrayList<>();
+    List<String> VocabList = new ArrayList<>();
     String VocabFile = null;
 
     private void readFile() {
@@ -70,38 +72,61 @@ public class VocabReader {
         }
         String thisLine;
         try {
+        	
+        	
+        	
             while ((thisLine = vocabReader.readLine()) != null) { // while loop begins here
-
+            	Genus genus = null;
+            	String localMeaning = null;
+            	String foreignMeaning = null;
+            	String genitiv = null;
+            	
                 System.out.println(thisLine);
                 String[] platzhalter = thisLine.split(";");
                 if(platzhalter[0].contains("Substantiv")) {
-                	if(platzhalter[0]!=null) {
-	                    this.VocabListLocal.add(platzhalter[0]);
+                	if(platzhalter[3]!=null) {
+	                    if(platzhalter[3].contains("m")) {
+	                    	genus = Genus.MALE;
+	                    }else if(platzhalter[3].contains("f")) {
+	                    	genus = Genus.FEMALE;
+	                    }else if(platzhalter[3].contains("n")) {
+	                    	genus = Genus.NEUTRAL;
+	                    }
 	                }else {
 	                    System.out.println("ERROR!");
 	                }
 	
-	                if(platzhalter[1]!=null) {
-	                    this.VocabListForeign.add(platzhalter[1]);
+	                if(platzhalter[1]!=null) { 
+	                    foreignMeaning = platzhalter[1];
 	                }else {
 	                    System.out.println("ERROR!");
 	                }
 	                
 	
 	                if(platzhalter[2]!=null) {
-	                    this.VocabListForeign.add(platzhalter[2]);
+	                    genitiv = platzhalter[2];
 	                }else {
 	                    System.out.println("ERROR!");
 	                }
+	                
+	                if(platzhalter[4]!=null) {
+	                	localMeaning = platzhalter[4];
+	                }else {
+	                    System.out.println("ERROR!");
+	                }	         
+	                VocabList.add(foreignMeaning);
+	                
+	                new SubstantivVocab(genus, genitiv, foreignMeaning, localMeaning);
+	                
                 }else if(platzhalter[0].contains("Verb")) {
                 	
                 }else {
-                	
+                	System.out.println("ERROR: Type");
                 }
 	                
 
             }
-            new LessonStart(VocabListLocal, VocabListForeign);
+            new LessonStart(VocabList);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

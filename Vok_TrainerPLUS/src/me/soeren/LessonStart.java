@@ -33,7 +33,7 @@ public class LessonStart {
 
 
     @SuppressWarnings("rawtypes")
-	LessonStart(List VocabListLocal, List VocabListForeign){
+	LessonStart(List VocabListLocal){
         JFrame m = new JFrame("VokabelTrainer v. 1.0.0 BETA"); //menu
         JButton exit = new JButton("verlassen");
         JButton start = new JButton("Start");
@@ -75,7 +75,7 @@ public class LessonStart {
                 m.dispose();
 
                 trainer.setVisible(true);
-                generateVocab(VocabListLocal, VocabListForeign);
+                generateVocab(VocabListLocal);
             }
 
         });
@@ -83,7 +83,7 @@ public class LessonStart {
 
     }
     @SuppressWarnings("rawtypes")
-	private void generateVocab(List vocabListLocal, List vocabListForeign) {
+	private void generateVocab(List vocabListLocal) {
         int listSize = vocabListLocal.size();
         trainer.setLayout(new FlowLayout());
         //trainer.add(submit);
