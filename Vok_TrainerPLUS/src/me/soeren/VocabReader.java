@@ -74,17 +74,31 @@ public class VocabReader {
 
                 System.out.println(thisLine);
                 String[] platzhalter = thisLine.split(";");
-
-                if(platzhalter[-1]!=null) {
-                    this.VocabListForeign.add(platzhalter[-1]);
+                if(platzhalter[0].contains("Substantiv")) {
+                	if(platzhalter[0]!=null) {
+	                    this.VocabListLocal.add(platzhalter[0]);
+	                }else {
+	                    System.out.println("ERROR!");
+	                }
+	
+	                if(platzhalter[1]!=null) {
+	                    this.VocabListForeign.add(platzhalter[1]);
+	                }else {
+	                    System.out.println("ERROR!");
+	                }
+	                
+	
+	                if(platzhalter[2]!=null) {
+	                    this.VocabListForeign.add(platzhalter[2]);
+	                }else {
+	                    System.out.println("ERROR!");
+	                }
+                }else if(platzhalter[0].contains("Verb")) {
+                	
                 }else {
-                    System.out.println("ERROR!");
+                	
                 }
-                if(platzhalter[0]!=null) {
-                    this.VocabListLocal.add(platzhalter[0]);
-                }else {
-                    System.out.println("ERROR!");
-                }
+	                
 
             }
             new LessonStart(VocabListLocal, VocabListForeign);
