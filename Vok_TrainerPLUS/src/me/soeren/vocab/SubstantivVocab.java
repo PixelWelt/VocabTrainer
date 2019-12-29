@@ -16,8 +16,29 @@ public class SubstantivVocab {
 	public Genus getGenus() {
 		return genus;
 	}
-	public String genitiv() {
+	public String getGenitiv() {
 		return genitiv;
 	}
+	public String getForeignMeaning() {
+		return foreignMeaning;
+	}
+	public String getLocalMeaning() {
+		return localMeaning;
+	}
+	
+	
+	public void setGenus(Genus genus) {
+		this.genus = genus;
+	}
+	public void setGenitiv(String genitiv) {
+		this.genitiv = genitiv;
+	}
+	public void setForeignMeaning(String foreignMeaning) {
+		this.foreignMeaning = foreignMeaning;
+	}	
+	public void setLocalMeaning(String localMeaning) {
+		this.localMeaning = localMeaning;
+	}
+	
 	
 }
