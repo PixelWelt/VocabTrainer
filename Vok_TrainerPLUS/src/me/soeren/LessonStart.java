@@ -83,7 +83,7 @@ public class LessonStart {
 
     }
     @SuppressWarnings("rawtypes")
-	private void generateVocab(List vocabListLocal) {
+	private void generateVocab(List vocabList) {
         int listSize = vocabListLocal.size();
         trainer.setLayout(new FlowLayout());
         //trainer.add(submit);
@@ -98,17 +98,17 @@ public class LessonStart {
 
         System.out.println(nextVocab);
 
-        vocab.setText((String) vocabListForeign.get(nextVocab));
+        vocab.setText((String) vocabList.get(nextVocab));
 
         vocabInput.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("test");
-                System.out.println(vocabListLocal.get(nextVocab));
+                //System.out.println(vocabListLocal.get(nextVocab));
                 System.out.println(vocabInput.getText());
 
-                if(vocabInput.getText().contains((CharSequence) vocabListLocal.get(nextVocab)) ) {
+                if(vocabInput.getText().contains((CharSequence) ) ) {
                     System.out.println("richtig!");
                     System.out.println(nextVocab + "richtig");
                     score ++;
